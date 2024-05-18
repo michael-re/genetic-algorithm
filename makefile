@@ -5,3 +5,7 @@ release:
 debug:
 	cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug
 	cmake --build build
+
+clean:
+	rm -rf build
+	rm -rf bin
