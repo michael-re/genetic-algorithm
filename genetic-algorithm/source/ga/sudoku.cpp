@@ -12,7 +12,14 @@ auto ga::sudoku::cell(const int x, const int y) const -> const detail::cell&
 
 auto ga::sudoku::read(std::istream &stream) -> std::istream &
 {
-    throw std::runtime_error("unimplemented function - ga::sudoku::read");
+    auto c = char(0x0);
+    auto i = int (0x0);
+
+    m_grid = {};
+    while ((i < m_grid.size()) && (stream >> c))
+        if (c >= '0' && c <= '9') m_grid[i++] = detail::cell(c == '0', c);
+
+    return stream;
 }
 
 auto ga::sudoku::write(std::ostream &stream) const -> std::ostream &
