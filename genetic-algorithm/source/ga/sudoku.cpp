@@ -10,7 +10,7 @@ auto ga::sudoku::cell(const int x, const int y) const -> const detail::cell&
     return m_grid.at((y * detail::grid_w) + x);
 }
 
-auto ga::sudoku::read(std::istream &stream) -> std::istream &
+auto ga::sudoku::read(std::istream& stream) -> std::istream&
 {
     auto c = char(0x0);
     auto i = int (0x0);
@@ -22,7 +22,29 @@ auto ga::sudoku::read(std::istream &stream) -> std::istream &
     return stream;
 }
 
-auto ga::sudoku::write(std::ostream &stream) const -> std::ostream &
+auto ga::sudoku::write(std::ostream& stream) const -> std::ostream&
 {
-    throw std::runtime_error("unimplemented function - ga::sudoku::write");
+    static constexpr auto hline = "+-------+-------+-------+";
+    static constexpr auto vline = '|';
+    static constexpr auto space = ' ';
+    static constexpr auto endl  = '\n';
+
+    stream << hline << endl;
+    for (auto y = 0; y < detail::grid_h; y++)
+    {
+        stream << vline;
+        for (auto x = 0; x < detail::grid_w; x++)
+        {
+            const auto value = cell(x, y).value;
+            stream << space << (value == '0' ? space : value);
+            if ((x % detail::sub_grid_w) == 2)
+                stream << space << vline;
+        }
+
+        stream << endl;
+        if ((y % detail::sub_grid_h) == 2)
+            stream << hline << endl;
+    }
+
+    return stream;
 }
