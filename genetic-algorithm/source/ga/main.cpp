@@ -1,11 +1,18 @@
 #include <format>
 #include <iostream>
 
+#include "ga/sudoku.hpp"
+
 auto main() -> int
 {
     try
     {
-        std::cout << "hello world!\n";
+        auto p = ga::sudoku();
+
+        std::cout << "enter sudoku puzzle: ";
+        std::cin  >> p;
+        std::cout << std::endl << p << std::endl;
+
         return EXIT_SUCCESS;
     }
     catch(const std::exception& e)
