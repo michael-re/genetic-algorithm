@@ -32,7 +32,7 @@ auto ga::sudoku_fitness::row_fitness(const sudoku& puzzle, const int x) -> int
 {
     auto duplicates = std::array<int, 10>();
     for (auto y = 0; y < sudoku::detail::grid_h; y++)
-        duplicates[puzzle.cell(x, y).value - '0']++;
+        duplicates[static_cast<std::size_t>(puzzle.cell(x, y).value - '0')]++;
 
     return (duplicates[0] == 0)
          ? compute_fitness(duplicates)
@@ -43,7 +43,7 @@ auto ga::sudoku_fitness::col_fitness(const sudoku& puzzle, const int y) -> int
 {
     auto duplicates = std::array<int, 10>();
     for (auto x = 0; x < sudoku::detail::grid_w; x++)
-        duplicates[puzzle.cell(x, y).value - '0']++;
+        duplicates[static_cast<std::size_t>(puzzle.cell(x, y).value - '0')]++;
 
     return (duplicates[0] == 0)
          ? compute_fitness(duplicates)
@@ -55,7 +55,7 @@ auto ga::sudoku_fitness::sub_fitness(const sudoku& puzzle, const int origin_x, c
     auto duplicates = std::array<int, 10>();
     for (auto y = origin_y; y < (origin_y + sudoku::detail::sub_grid_h); y++)
         for (auto x = origin_x; x < (origin_x + sudoku::detail::sub_grid_w); x++)
-            duplicates[puzzle.cell(x, y).value - '0']++;
+            duplicates[static_cast<std::size_t>(puzzle.cell(x, y).value - '0')]++;
 
     return (duplicates[0] == 0)
          ? compute_fitness(duplicates)

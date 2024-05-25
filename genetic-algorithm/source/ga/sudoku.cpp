@@ -2,18 +2,20 @@
 
 auto ga::sudoku::cell(const int x, const int y) -> detail::cell&
 {
-    return m_grid.at((y * detail::grid_w) + x);
+    const auto index = (y * detail::grid_w) + x;
+    return m_grid.at(static_cast<std::size_t>(index));
 }
 
 auto ga::sudoku::cell(const int x, const int y) const -> const detail::cell&
 {
-    return m_grid.at((y * detail::grid_w) + x);
+    const auto index = (y * detail::grid_w) + x;
+    return m_grid.at(static_cast<std::size_t>(index));
 }
 
 auto ga::sudoku::read(std::istream& stream) -> std::istream&
 {
-    auto c = char(0x0);
-    auto i = int (0x0);
+    auto c = char       (0x0);
+    auto i = std::size_t(0x0);
 
     m_grid = {};
     while ((i < m_grid.size()) && (stream >> c))

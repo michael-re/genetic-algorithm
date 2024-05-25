@@ -10,8 +10,8 @@ namespace ga
     class puzzle_fitness
     {
     public:
-        static constexpr auto invalid  = int(-1);
-        static constexpr auto solution = int(0);
+        static constexpr auto invalid  = -1;
+        static constexpr auto solution = 0;
 
     public:
         explicit puzzle_fitness() = default;
