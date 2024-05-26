@@ -16,10 +16,11 @@ namespace ga
     public:
         struct detail
         {
-            static constexpr auto grid_w     = 9;
-            static constexpr auto grid_h     = 9;
-            static constexpr auto sub_grid_w = 3;
-            static constexpr auto sub_grid_h = 3;
+            static constexpr auto grid_width      = 9;
+            static constexpr auto grid_height     = 9;
+            static constexpr auto grid_size       = grid_width * grid_height;
+            static constexpr auto sub_grid_width  = 3;
+            static constexpr auto sub_grid_height = 3;
 
             struct cell
             {
@@ -27,10 +28,13 @@ namespace ga
                 char value      = '0';
             };
 
-            using grid = std::array<cell, grid_w * grid_h>;
+            using grid = std::array<cell, grid_size>;
         };
 
     public:
+        [[nodiscard]] auto operator[](const int index)       ->       detail::cell&;
+        [[nodiscard]] auto operator[](const int index) const -> const detail::cell&;
+
         [[nodiscard]] auto cell(const int x, const int y)       ->       detail::cell&;
         [[nodiscard]] auto cell(const int x, const int y) const -> const detail::cell&;
 
