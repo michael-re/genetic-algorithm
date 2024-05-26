@@ -29,8 +29,8 @@ auto ga::sudoku_offspring::make_offspring(const sudoku& puzzle) -> sudoku*
     static auto rde_s = std::random_device();
     static auto rng_1 = std::mt19937_64(rde_s());
     static auto rng_2 = std::mt19937_64(rde_s());
-    static auto uid_1 = std::uniform_int_distribution<int>(0x0, 0x09);
-    static auto uid_2 = std::uniform_int_distribution<int>(0x0, 0x63);
+    static auto uid_1 = std::uniform_int_distribution<int>(0x1, 0x09); // cell mutation value
+    static auto uid_2 = std::uniform_int_distribution<int>(0x0, 0x63); // cell mutation probability
 
     static const auto base        = 5;
     static const auto mutation    = []() { return uid_1(rng_1); };
