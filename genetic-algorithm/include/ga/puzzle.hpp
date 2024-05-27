@@ -11,8 +11,8 @@ namespace ga
     class puzzle
     {
     public:
-        explicit puzzle() = default;
-        virtual ~puzzle() = default;
+        constexpr explicit puzzle() = default;
+        constexpr virtual ~puzzle() = default;
 
         [[nodiscard]] virtual auto read (std::istream& stream)       -> std::istream& = 0;
         [[nodiscard]] virtual auto write(std::ostream& stream) const -> std::ostream& = 0;

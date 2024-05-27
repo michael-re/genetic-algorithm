@@ -13,6 +13,9 @@ namespace ga
         : public puzzle_factory
     {
     public:
+        constexpr explicit sudoku_factory()          = default;
+        constexpr virtual ~sudoku_factory() override = default;
+
         [[nodiscard]] virtual auto reproduction() const -> const sudoku_offspring& override;
         [[nodiscard]] virtual auto create_puzzle(const puzzle& puzzle) const -> sudoku* override;
         [[nodiscard]] virtual auto clone_puzzle (const puzzle& puzzle) const -> sudoku* override;

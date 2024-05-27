@@ -32,6 +32,9 @@ namespace ga
         };
 
     public:
+        constexpr explicit sudoku()          = default;
+        constexpr virtual ~sudoku() override = default;
+
         [[nodiscard]] auto operator[](const int index)       ->       detail::cell&;
         [[nodiscard]] auto operator[](const int index) const -> const detail::cell&;
 

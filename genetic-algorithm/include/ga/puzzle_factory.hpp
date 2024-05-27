@@ -11,8 +11,8 @@ namespace ga
     class puzzle_factory
     {
     public:
-        explicit puzzle_factory() = default;
-        virtual ~puzzle_factory() = default;
+        constexpr explicit puzzle_factory() = default;
+        constexpr virtual ~puzzle_factory() = default;
 
         [[nodiscard]] virtual auto reproduction() const -> const puzzle_offspring& = 0;
 

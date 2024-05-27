@@ -12,6 +12,9 @@ namespace ga
         : public puzzle_fitness
     {
     public:
+        constexpr explicit sudoku_fitness()          = default;
+        constexpr virtual ~sudoku_fitness() override = default;
+
         [[nodiscard]] virtual auto how_fit(const puzzle& puzzle) const -> int override;
 
     private:

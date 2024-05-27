@@ -3,7 +3,7 @@
 
 auto ga::sudoku_factory::reproduction() const -> const sudoku_offspring&
 {
-    static const auto reproduction = sudoku_offspring();
+    static constexpr auto reproduction = sudoku_offspring();
     return reproduction;
 }
 

@@ -14,8 +14,8 @@ namespace ga
         static constexpr auto solution = 0;
 
     public:
-        explicit puzzle_fitness() = default;
-        virtual ~puzzle_fitness() = default;
+        constexpr explicit puzzle_fitness() = default;
+        constexpr virtual ~puzzle_fitness() = default;
 
         [[nodiscard]] virtual auto how_fit(const puzzle& puzzle) const -> int = 0;
     };
