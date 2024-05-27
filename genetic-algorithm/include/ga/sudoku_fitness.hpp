@@ -13,7 +13,6 @@ namespace ga
     {
     public:
         [[nodiscard]] virtual auto how_fit(const puzzle& puzzle) const -> int override;
-        [[nodiscard]] static  auto how_fit(const sudoku& puzzle)       -> int;
 
     private:
         [[nodiscard]] static auto row_fitness(const sudoku& puzzle, const int x) -> int;

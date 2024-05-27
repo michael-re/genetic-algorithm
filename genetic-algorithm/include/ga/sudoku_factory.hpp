@@ -16,9 +16,6 @@ namespace ga
         [[nodiscard]] virtual auto reproduction() const -> const sudoku_offspring& override;
         [[nodiscard]] virtual auto create_puzzle(const puzzle& puzzle) const -> sudoku* override;
         [[nodiscard]] virtual auto clone_puzzle (const puzzle& puzzle) const -> sudoku* override;
-
-        [[nodiscard]] static auto create_puzzle(const sudoku& puzzle) -> sudoku*;
-        [[nodiscard]] static auto clone_puzzle (const sudoku& puzzle) -> sudoku*;
     };
 } // namespace ga
 

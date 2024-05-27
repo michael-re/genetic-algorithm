@@ -3,19 +3,15 @@
 auto ga::sudoku_fitness::how_fit(const puzzle& puzzle) const -> int
 {
     const auto pointer = dynamic_cast<const sudoku* const>(&puzzle);
-    return (pointer != nullptr)
-         ? how_fit(*pointer)
-         : throw std::invalid_argument("can't calculate fitness of a non-sudoku puzzle");
-}
+    if (pointer != nullptr)
+        throw std::invalid_argument("can't calculate fitness of a non-sudoku puzzle");
 
-auto ga::sudoku_fitness::how_fit(const sudoku& puzzle) -> int
-{
     auto fitness = solution; // assume we start with solution
     for (auto i = 0, origin_x = 0, origin_y = 0; i < sudoku::detail::grid_height; i++)
     {
-        fitness += row_fitness(puzzle, i);
-        fitness += col_fitness(puzzle, i);
-        fitness += sub_fitness(puzzle, origin_x, origin_y);
+        fitness += row_fitness(*pointer, i);
+        fitness += col_fitness(*pointer, i);
+        fitness += sub_fitness(*pointer, origin_x, origin_y);
 
         origin_y += sudoku::detail::sub_grid_height;
         if (origin_y == sudoku::detail::grid_height)

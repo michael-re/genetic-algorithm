@@ -7,24 +7,11 @@ auto ga::sudoku_offspring::clone_puzzle(const puzzle& puzzle) const -> sudoku*
 {
     const auto pointer = dynamic_cast<const sudoku* const>(&puzzle);
     return (pointer != nullptr)
-         ? clone_puzzle(*pointer)
-         : throw std::invalid_argument("ca't clone non-sudoku puzzle");
+         ? new sudoku(*pointer)
+         : throw std::invalid_argument("can't clone non-sudoku puzzle");
 }
 
 auto ga::sudoku_offspring::make_offspring(const puzzle& puzzle) const -> sudoku*
-{
-    const auto pointer = dynamic_cast<const sudoku* const>(&puzzle);
-    return (pointer != nullptr)
-         ? make_offspring(*pointer)
-         : throw std::invalid_argument("can't produce offspring of non-sudoku puzzle");
-}
-
-auto ga::sudoku_offspring::clone_puzzle(const sudoku& puzzle) -> sudoku*
-{
-    return new sudoku(puzzle);
-}
-
-auto ga::sudoku_offspring::make_offspring(const sudoku& puzzle) -> sudoku*
 {
     static auto rde_s = std::random_device();
     static auto rng_1 = std::mt19937_64(rde_s());

@@ -16,13 +16,3 @@ auto ga::sudoku_factory::clone_puzzle(const puzzle& puzzle) const -> sudoku*
 {
     return reproduction().clone_puzzle(puzzle);
 }
-
-auto ga::sudoku_factory::create_puzzle(const sudoku& puzzle) -> sudoku*
-{
-    return sudoku_offspring::make_offspring(puzzle);
-}
-
-auto ga::sudoku_factory::clone_puzzle(const sudoku& puzzle) -> sudoku*
-{
-    return sudoku_offspring::clone_puzzle(puzzle);
-}
