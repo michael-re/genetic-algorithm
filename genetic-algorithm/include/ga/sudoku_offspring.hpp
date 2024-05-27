@@ -12,8 +12,8 @@ namespace ga
         : public puzzle_offspring
     {
     public:
-        [[nodiscard]] virtual auto clone_puzzle  (const puzzle& puzzle) const -> ga::puzzle* override;
-        [[nodiscard]] virtual auto make_offspring(const puzzle& puzzle) const -> ga::puzzle* override;
+        [[nodiscard]] virtual auto clone_puzzle  (const puzzle& puzzle) const -> sudoku* override;
+        [[nodiscard]] virtual auto make_offspring(const puzzle& puzzle) const -> sudoku* override;
 
         [[nodiscard]] static auto clone_puzzle  (const sudoku& puzzle) -> sudoku*;
         [[nodiscard]] static auto make_offspring(const sudoku& puzzle) -> sudoku*;

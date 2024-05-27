@@ -3,7 +3,7 @@
 
 #include "ga/sudoku_offspring.hpp"
 
-auto ga::sudoku_offspring::clone_puzzle(const puzzle& puzzle) const -> ga::puzzle*
+auto ga::sudoku_offspring::clone_puzzle(const puzzle& puzzle) const -> sudoku*
 {
     const auto pointer = dynamic_cast<const sudoku* const>(&puzzle);
     return (pointer != nullptr)
@@ -11,7 +11,7 @@ auto ga::sudoku_offspring::clone_puzzle(const puzzle& puzzle) const -> ga::puzzl
          : throw std::invalid_argument("ca't clone non-sudoku puzzle");
 }
 
-auto ga::sudoku_offspring::make_offspring(const puzzle& puzzle) const -> ga::puzzle*
+auto ga::sudoku_offspring::make_offspring(const puzzle& puzzle) const -> sudoku*
 {
     const auto pointer = dynamic_cast<const sudoku* const>(&puzzle);
     return (pointer != nullptr)

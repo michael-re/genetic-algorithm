@@ -7,12 +7,12 @@ auto ga::sudoku_factory::reproduction() const -> const sudoku_offspring&
     return reproduction;
 }
 
-auto ga::sudoku_factory::create_puzzle(const puzzle& puzzle) const -> ga::puzzle*
+auto ga::sudoku_factory::create_puzzle(const puzzle& puzzle) const -> sudoku*
 {
     return reproduction().make_offspring(puzzle);
 }
 
-auto ga::sudoku_factory::clone_puzzle(const puzzle& puzzle) const -> ga::puzzle*
+auto ga::sudoku_factory::clone_puzzle(const puzzle& puzzle) const -> sudoku*
 {
     return reproduction().clone_puzzle(puzzle);
 }
