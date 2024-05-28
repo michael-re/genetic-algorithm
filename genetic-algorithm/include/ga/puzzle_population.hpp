@@ -16,9 +16,14 @@ namespace ga
         class individual;
         using individuals = std::vector<individual>;
 
-    private:
-        std::size_t m_size       = {};
-        individuals m_population = {};
+        constexpr explicit puzzle_population() = default;
+        constexpr virtual ~puzzle_population() = default;
+
+        virtual auto cull(const float percent) -> void = 0;
+        virtual auto new_generation()          -> void = 0;
+
+        [[nodiscard]] virtual auto best_fitness()    const -> int               = 0;
+        [[nodiscard]] virtual auto best_individual() const -> const individual& = 0;
     };
 
     class puzzle_population::individual
