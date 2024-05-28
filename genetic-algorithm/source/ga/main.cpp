@@ -1,6 +1,7 @@
 #include <format>
 #include <iostream>
 
+#include "ga/puzzle_population.hpp"
 #include "ga/sudoku.hpp"
 
 auto main() -> int
