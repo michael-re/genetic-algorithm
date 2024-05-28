@@ -13,22 +13,18 @@ auto ga::sudoku_offspring::clone_puzzle(const puzzle& puzzle) const -> sudoku*
 
 auto ga::sudoku_offspring::make_offspring(const puzzle& puzzle) const -> sudoku*
 {
-    static auto rde_s = std::random_device();
-    static auto rng_1 = std::mt19937_64(rde_s());
-    static auto rng_2 = std::mt19937_64(rde_s());
-    static auto uid_1 = std::uniform_int_distribution<int>(0x1, 0x09); // cell mutation value
-    static auto uid_2 = std::uniform_int_distribution<int>(0x0, 0x63); // cell mutation probability
-
-    static const auto base        = 5;
-    static const auto mutation    = []() { return uid_1(rng_1); };
-    static const auto probability = []() { return uid_2(rng_2); };
+    static auto time        = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    static auto seed        = std::random_device();
+    static auto engine      = std::mt19937_64(seed() ^ static_cast<std::mt19937_64::result_type>(time));
+    static auto mutation    = std::uniform_int_distribution<int>(0x1, 0x09);
+    static auto probability = std::uniform_int_distribution<int>(0x0, 0x63);
 
     auto offspring = clone_puzzle(puzzle);
     for (auto i = 0; i < sudoku::detail::grid_size; i++)
     {
         const auto& [stochastic, value] = (*offspring)[i];
-        if ((value == '0') || (stochastic && (base >= probability())))
-            (*offspring)[i].value = static_cast<char>(mutation() + '0');
+        if ((value == '0') || (stochastic && (5 >= probability(engine))))
+            (*offspring)[i].value = static_cast<char>(mutation(engine) + '0');
     }
 
     return offspring;
