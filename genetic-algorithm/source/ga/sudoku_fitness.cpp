@@ -3,7 +3,7 @@
 auto ga::sudoku_fitness::how_fit(const puzzle& puzzle) const -> int
 {
     const auto pointer = dynamic_cast<const sudoku* const>(&puzzle);
-    if (pointer != nullptr)
+    if (pointer == nullptr)
         throw std::invalid_argument("can't calculate fitness of a non-sudoku puzzle");
 
     auto fitness = solution; // assume we start with solution
@@ -16,7 +16,7 @@ auto ga::sudoku_fitness::how_fit(const puzzle& puzzle) const -> int
         origin_y += sudoku::detail::sub_grid_height;
         if (origin_y == sudoku::detail::grid_height)
         {
-            origin_x += sudoku::detail::grid_width;
+            origin_x += sudoku::detail::sub_grid_width;
             origin_y  = 0;
         }
     }
