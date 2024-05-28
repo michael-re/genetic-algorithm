@@ -1,3 +1,5 @@
+#include "ga/sudoku_factory.hpp"
+#include "ga/sudoku_fitness.hpp"
 #include "ga/sudoku.hpp"
 
 auto ga::sudoku::operator[](const int index) -> detail::cell&
@@ -20,7 +22,25 @@ auto ga::sudoku::cell(const int x, const int y) const -> const detail::cell&
     return (*this)[(y * detail::grid_width) + x];
 }
 
-auto ga::sudoku::read(std::istream& stream) -> std::istream&
+auto ga::sudoku::clone() const -> sudoku*
+{
+    static constexpr auto factory = sudoku_factory();
+    return factory.clone_puzzle(*this);
+}
+
+auto ga::sudoku::fitness() const -> int
+{
+    static constexpr auto evaluator = sudoku_fitness();
+    return evaluator.how_fit(*this);
+}
+
+auto ga::sudoku::offspring() const -> sudoku*
+{
+    static constexpr auto factory = sudoku_factory();
+    return factory.create_puzzle(*this);
+}
+
+auto ga::sudoku::read(std::istream &stream) -> std::istream &
 {
     auto c = char       (0x0);
     auto i = std::size_t(0x0);

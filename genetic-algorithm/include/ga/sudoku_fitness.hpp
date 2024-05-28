@@ -15,16 +15,16 @@ namespace ga
         constexpr explicit sudoku_fitness()          = default;
         constexpr virtual ~sudoku_fitness() override = default;
 
-        [[nodiscard]] virtual auto how_fit(const puzzle& puzzle) const -> int override;
+        [[nodiscard]] virtual auto how_fit(const puzzle&) const -> int override;
 
     private:
-        [[nodiscard]] static auto row_fitness(const sudoku& puzzle, const int x) -> int;
-        [[nodiscard]] static auto col_fitness(const sudoku& puzzle, const int y) -> int;
-        [[nodiscard]] static auto sub_fitness(const sudoku& puzzle, const int origin_x,
-                                                                    const int origin_y) -> int;
+        [[nodiscard]] static auto row_fitness(const sudoku&, const int x) -> int;
+        [[nodiscard]] static auto col_fitness(const sudoku&, const int y) -> int;
+        [[nodiscard]] static auto sub_fitness(const sudoku&, const int origin_x,
+                                                             const int origin_y) -> int;
 
         template<typename Container>
-        [[nodiscard]] static auto compute_fitness(const Container& duplicates) -> int;
+        [[nodiscard]] static auto compute_fitness(const Container&) -> int;
     };
 } // namespace ga
 

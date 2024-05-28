@@ -3,9 +3,6 @@
 #ifndef GA_PUZZLE_FACTORY_HPP
 #define GA_PUZZLE_FACTORY_HPP
 
-#include "ga/puzzle_offspring.hpp"
-#include "ga/puzzle.hpp"
-
 namespace ga
 {
     class puzzle_factory
@@ -14,10 +11,9 @@ namespace ga
         constexpr explicit puzzle_factory() = default;
         constexpr virtual ~puzzle_factory() = default;
 
-        [[nodiscard]] virtual auto reproduction() const -> const puzzle_offspring& = 0;
-
-        [[nodiscard]] virtual auto create_puzzle(const puzzle& puzzle) const -> ga::puzzle* = 0;
-        [[nodiscard]] virtual auto clone_puzzle (const puzzle& puzzle) const -> ga::puzzle* = 0;
+        [[nodiscard]] virtual auto reproduction() const -> const class puzzle_offspring&     = 0;
+        [[nodiscard]] virtual auto create_puzzle(const class puzzle&) const -> class puzzle* = 0;
+        [[nodiscard]] virtual auto clone_puzzle (const class puzzle&) const -> class puzzle* = 0;
     };
 } // namespace ga
 

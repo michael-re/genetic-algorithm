@@ -3,8 +3,6 @@
 #ifndef GA_PUZZLE_FITNESS_HPP
 #define GA_PUZZLE_FITNESS_HPP
 
-#include "ga/puzzle.hpp"
-
 namespace ga
 {
     class puzzle_fitness
@@ -17,7 +15,7 @@ namespace ga
         constexpr explicit puzzle_fitness() = default;
         constexpr virtual ~puzzle_fitness() = default;
 
-        [[nodiscard]] virtual auto how_fit(const puzzle& puzzle) const -> int = 0;
+        [[nodiscard]] virtual auto how_fit(const class puzzle&) const -> int = 0;
     };
 } // namespace ga
 

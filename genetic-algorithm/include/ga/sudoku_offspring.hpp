@@ -15,8 +15,8 @@ namespace ga
         constexpr explicit sudoku_offspring()          = default;
         constexpr virtual ~sudoku_offspring() override = default;
 
-        [[nodiscard]] virtual auto clone_puzzle  (const puzzle& puzzle) const -> sudoku* override;
-        [[nodiscard]] virtual auto make_offspring(const puzzle& puzzle) const -> sudoku* override;
+        [[nodiscard]] virtual auto clone_puzzle  (const puzzle&) const -> sudoku* override;
+        [[nodiscard]] virtual auto make_offspring(const puzzle&) const -> sudoku* override;
     };
 } // namespace ga
 

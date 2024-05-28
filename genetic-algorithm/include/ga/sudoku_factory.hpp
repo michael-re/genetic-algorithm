@@ -3,9 +3,8 @@
 #ifndef GA_SUDOKU_FACTORY_HPP
 #define GA_SUDOKU_FACTORY_HPP
 
-#include "ga/puzzle_factory.hpp"
 #include "ga/sudoku_offspring.hpp"
-#include "ga/sudoku.hpp"
+#include "ga/puzzle_factory.hpp"
 
 namespace ga
 {
@@ -17,8 +16,8 @@ namespace ga
         constexpr virtual ~sudoku_factory() override = default;
 
         [[nodiscard]] virtual auto reproduction() const -> const sudoku_offspring& override;
-        [[nodiscard]] virtual auto create_puzzle(const puzzle& puzzle) const -> sudoku* override;
-        [[nodiscard]] virtual auto clone_puzzle (const puzzle& puzzle) const -> sudoku* override;
+        [[nodiscard]] virtual auto create_puzzle(const puzzle&) const -> sudoku* override;
+        [[nodiscard]] virtual auto clone_puzzle (const puzzle&) const -> sudoku* override;
     };
 } // namespace ga
 

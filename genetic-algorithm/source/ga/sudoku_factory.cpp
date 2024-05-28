@@ -1,5 +1,4 @@
 #include "ga/sudoku_factory.hpp"
-#include "ga/sudoku_offspring.hpp"
 
 auto ga::sudoku_factory::reproduction() const -> const sudoku_offspring&
 {

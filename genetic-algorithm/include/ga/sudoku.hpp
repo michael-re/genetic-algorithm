@@ -41,6 +41,10 @@ namespace ga
         [[nodiscard]] auto cell(const int x, const int y)       ->       detail::cell&;
         [[nodiscard]] auto cell(const int x, const int y) const -> const detail::cell&;
 
+        [[nodiscard]] virtual auto clone()     const -> sudoku* override;
+        [[nodiscard]] virtual auto fitness()   const -> int     override;
+        [[nodiscard]] virtual auto offspring() const -> sudoku* override;
+
         [[nodiscard]] virtual auto read (std::istream& stream)       -> std::istream& override;
         [[nodiscard]] virtual auto write(std::ostream& stream) const -> std::ostream& override;
 

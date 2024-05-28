@@ -14,6 +14,10 @@ namespace ga
         constexpr explicit puzzle() = default;
         constexpr virtual ~puzzle() = default;
 
+        [[nodiscard]] virtual auto clone()     const -> puzzle* = 0;
+        [[nodiscard]] virtual auto fitness()   const -> int     = 0;
+        [[nodiscard]] virtual auto offspring() const -> puzzle* = 0;
+
         [[nodiscard]] virtual auto read (std::istream& stream)       -> std::istream& = 0;
         [[nodiscard]] virtual auto write(std::ostream& stream) const -> std::ostream& = 0;
     };
