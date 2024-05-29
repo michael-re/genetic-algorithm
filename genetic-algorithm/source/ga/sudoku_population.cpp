@@ -14,7 +14,8 @@ auto ga::sudoku_population::cull(const float percent) -> void
 {
     if (percent != 0.0f)
     {
-        const auto pop_cull_rate = static_cast<std::size_t>(m_size * std::min(1.0f, std::abs(percent)));
+        const auto curr_size     = static_cast<double>(m_size);
+        const auto pop_cull_rate = static_cast<std::size_t>(curr_size * std::min<double>(1.0, std::abs(percent)));
         const auto pop_cull_size = static_cast<std::ptrdiff_t>((m_size - pop_cull_rate) + 1u);
         const auto least_fit_beg = m_individuals.begin() + pop_cull_size;
         const auto least_fit_end = m_individuals.end();
