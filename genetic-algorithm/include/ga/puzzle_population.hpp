@@ -37,8 +37,8 @@ namespace ga
         individual(individual&&);
         individual(const individual&);
 
-        [[nodiscard]] auto operator=(individual&&)      -> individual&;
-        [[nodiscard]] auto operator=(const individual&) -> individual&;
+        auto operator=(individual&&)      -> individual&;
+        auto operator=(const individual&) -> individual&;
 
         [[nodiscard]] auto operator>(const individual&) const -> bool;
         [[nodiscard]] auto operator<(const individual&) const -> bool;
