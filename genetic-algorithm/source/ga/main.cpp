@@ -24,7 +24,7 @@ auto main(const int argc, const char* argv[]) -> int
         std::cin  >> source;
 
         std::cout << "\n\n===== source puzzle =====\n";
-        std::cout << source << std::endl << std::endl;
+        std::cout << source << std::endl;
 
         const auto cull_rate = 0.9f;
         const auto pop_size  = std::stoull(argv[1]);
@@ -40,7 +40,7 @@ auto main(const int argc, const char* argv[]) -> int
 
         std::cout << "Fitness:    "  << result.fitness()    << "\n";
         std::cout << "Generation: "  << result.generation() << "\n";
-        std::cout << result.puzzle() << "\n\n";
+        std::cout << result.puzzle() << "\n";
 
         return EXIT_SUCCESS;
     }
