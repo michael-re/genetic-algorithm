@@ -1,5 +1,14 @@
 # Genetic Algorithm: Sudoku Solver
 
+## Description
+
+This project implements a sudoku solver powered by a genetic algorithm (GA). It
+models the puzzle-solving process by simulating evolution, improving potential
+solutions over successive generations. With a population of candidate sudoku
+grids, each generation undergoes selection, culling, and mutation steps to guide
+the population toward a solution. The program stops when it finds a valid sudoku
+solution or reaches the set maximum number of generations.
+
 ## Getting Started
 
 ### Compiling The Program
